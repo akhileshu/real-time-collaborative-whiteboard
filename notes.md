@@ -126,3 +126,13 @@ pointerup / pointercancel → finish drag
   details to WebSocket clients.
 - A pending snapshot is independent of room membership, so removing the last
   client must not discard a board write that is waiting to flush.
+
+## video to gif
+
+```
+ffmpeg -i docs/videos/simplescreenrecorder-2026-07-19_02.00.27.mp4 \
+    -vf "fps=10,scale=900:-1:flags=lanczos" \
+    docs/videos/whiteboard-demo.gif
+
+![Whiteboard demo](docs/videos/whiteboard-demo.gif)
+```

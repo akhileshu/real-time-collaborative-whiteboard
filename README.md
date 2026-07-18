@@ -10,6 +10,8 @@ saved-board persistence, and buffered snapshot flushing.
 
 <video controls src="docs/videos/simplescreenrecorder-2026-07-19_02.00.27.mp4" title="Whiteboard demo"></video>
 
+![Whiteboard demo](docs/videos/whiteboard-demo.gif)
+
 ## Quick start
 
 Requirements: [Bun](https://bun.sh/), Docker, and Docker Compose.
