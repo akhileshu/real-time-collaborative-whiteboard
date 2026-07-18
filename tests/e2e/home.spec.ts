@@ -1,12 +1,16 @@
 import { expect, test } from "@playwright/test";
 
-test("shows the whiteboard workspace shell", async ({ page }) => {
+test("creates and reloads a todo through tRPC", async ({ page }) => {
   await page.goto("/");
 
-  await expect(
-    page.getByRole("heading", {
-      name: "Real-time collaborative whiteboard",
-    }),
-  ).toBeVisible();
-  await expect(page.getByText("Workspace ready")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Todos" })).toBeVisible();
+
+  const title = `Verify the T3 stack ${Date.now()}`;
+  await page.getByLabel("Todo title").fill(title);
+  await page.getByRole("button", { name: "Add todo" }).click();
+
+  await expect(page.getByText(title)).toBeVisible();
+
+  await page.reload();
+  await expect(page.getByText(title)).toBeVisible();
 });

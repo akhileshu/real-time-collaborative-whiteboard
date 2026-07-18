@@ -1,5 +1,8 @@
 import { z } from "zod";
 
-export const roomIdSchema = z.string().min(1).max(128);
+export * from "./document-operations";
+export * from "./board-snapshot";
+export * from "./shared-document";
+import { roomIdSchema } from "./document-operations";
 
 export type RoomId = z.infer<typeof roomIdSchema>;

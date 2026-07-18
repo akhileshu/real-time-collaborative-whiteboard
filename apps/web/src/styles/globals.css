@@ -12,6 +12,10 @@ body {
   overflow: hidden;
 }
 
+canvas {
+  display: block;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

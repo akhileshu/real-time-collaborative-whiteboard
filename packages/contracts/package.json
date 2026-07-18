@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "yjs": "^13.6.27",
     "zod": "^3.22.4"
   },
   "devDependencies": {

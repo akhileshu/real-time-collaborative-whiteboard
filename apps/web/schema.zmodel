@@ -1,0 +1,35 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+plugin trpc {
+  provider = "@zenstackhq/trpc"
+  output   = "src/server/api/routers/generated"
+  version  = "v10"
+}
+
+model Todo {
+  id        String   @id @default(cuid())
+  title     String
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@allow('all', true)
+}
+
+model Board {
+  id        String   @id @default(cuid())
+  roomId    String   @unique
+  name      String   @default("Untitled board")
+  snapshot  Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@allow('all', true)
+}
