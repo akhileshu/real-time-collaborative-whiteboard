@@ -1,0 +1,30 @@
+{
+  "name": "real-time-collaborative-whiteboard",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "bun@1.3.5",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "bun run build:web",
+    "build:web": "bun run --cwd apps/web build",
+    "dev": "bun run dev:web & bun run dev:realtime",
+    "dev:web": "bun run --cwd apps/web dev",
+    "dev:realtime": "bun run --cwd apps/realtime dev",
+    "lint": "bun run --cwd apps/web lint",
+    "test": "bun run test:unit",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test",
+    "typecheck": "bun run typecheck:web && bun run typecheck:realtime && bun run typecheck:contracts",
+    "typecheck:web": "bun run --cwd apps/web typecheck",
+    "typecheck:realtime": "bun run --cwd apps/realtime typecheck",
+    "typecheck:contracts": "bun run --cwd packages/contracts typecheck"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "vitest": "^3.2.4"
+  }
+}
